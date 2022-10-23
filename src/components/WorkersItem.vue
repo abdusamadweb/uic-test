@@ -6,11 +6,11 @@
         <span class="item__position text-sm uppercase opacity-70">{{ item.position }}</span>
       </div>
       <span class="item__date col-md-4 text-sm pl-0 text-[#70768C]">{{ item.gender }}</span>
-      <span class="item__gender text-sm text-[#70768C]">{{ item.gender }}</span>
+      <span class="item__gender text-sm text-[#70768C]">{{ item.dateOfBrith }}</span>
     </div>
     <div class="item__btns row gap-1.5">
       <button class="btn btn-edit relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#AD1FEA] hover:opacity-70 duration-200" @click="$router.push(`/edit-worker/${item.id}`)"><i class="fal fa-pen center-absolute"/></button>
-      <button class="btn btn-del relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#D73737] hover:opacity-70 duration-200" @click=""><i class="fal fa-trash-alt center-absolute"/></button>
+      <button class="btn btn-del relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#D73737] hover:opacity-70 duration-200" @click="removeWorker(item)"><i class="fal fa-trash-alt center-absolute"/></button>
     </div>
   </li>
 </template>
@@ -22,7 +22,7 @@ export default {
       type: Object
     },
     removeWorker: {
-      type: Function
+
     }
   }
 }

@@ -14,7 +14,7 @@
             <form class="workers__form col-md-5 pl-0">
               <label class="relative">
                 <i class="fal fa-search center-absolute left-6 text-[#808080] "/>
-                <input class="workers__inp w-[300px] text-sm p-2.5 pl-11 rounded-[12px] border border-[#eee] hover:border-[#1b59f8] focus:border-[#1b59f8] outline-none duration-300" v-model="keyword" type="search" placeholder="Search employer . . .">
+                <input v-model="keyword" class="workers__inp w-[300px] text-sm p-2.5 pl-11 rounded-[12px] border border-[#eee] hover:border-[#1b59f8] focus:border-[#1b59f8] outline-none duration-300" type="search" placeholder="Search employer . . .">
               </label>
             </form>
             <div class="col-md-3 text-sm relative right-8">
@@ -24,9 +24,12 @@
               <span class="px-4 py-1 rounded-[10px] text-[#4F5E74] bg-[#EFF0F6]">Gender:</span>
             </div>
           </div>
-          <ul class="workers__list row flex-col gap-4">
-            <WorkersItem  v-for="item in filterWorkers" :item="item" :key="item.id"/>
+          <ul class="workers__list row flex-col gap-4" v-if="filterWorkers.length > 0">
+            <transition-group name="worker-list">
+              <WorkersItem v-for="item in filterWorkers" :item="item" :key="item.id" :removeWorker="removeWorker"/>
+            </transition-group>
           </ul>
+          <h3 class="text-sm text-[#70768C] ml-1" v-else>No workers yet . . .</h3>
         </div>
       </div>
     </div>
@@ -41,12 +44,28 @@ import { useStore } from "@/store";
 const store = useStore()
 const keyword = ref("")
 const filterWorkers = computed(() => store.workersList.filter(({name}) => name.toLowerCase().includes(keyword.value)))
-// const removeWorker = (e) => store.workersList.filter(worker => worker.id !== e.id)
+const removeWorker = (e) => {
+  store.workersList = store.workersList.filter(worker => worker.id !== e.id)
+}
 </script>
 
 <style lang="scss" scoped>
 
 .workers {
+
+  .worker-list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .worker-list-enter-active,
+  .worker-list-leave-active {
+    transition: all 0.6s ease;
+  }
+  .worker-list-enter-from,
+  .worker-list-leave-to {
+    opacity: 0;
+    transform: translateX(130px);
+  }
 
   &__link {
     border: 1px solid transparent;
