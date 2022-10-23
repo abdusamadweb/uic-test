@@ -1,30 +1,34 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <Header />
   <router-view/>
 </template>
 
+<script>
+
+import Header from "@/components/Header";
+import MainPage from "@/pages/MainPage";
+export default {
+  components: {MainPage, Header}
+}
+
+</script>
+
 <style lang="scss">
+
+@import './assets/styles/normalize.css';
+@import './assets/styles/flex-box.css';
+@import './assets/styles/global.css';
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  overflow-y: scroll;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: flex;
+  font-family: Inter, sans-serif;
+  color: #3A4374;
+  background: #f7f8fd;
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
