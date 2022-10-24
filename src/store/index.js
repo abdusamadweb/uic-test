@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import {ref} from "vue";
 
 export const useStore = defineStore("main", () => {
     const workersList = [
@@ -33,39 +32,20 @@ export const useStore = defineStore("main", () => {
         },
         {
             id: 5,
-            name: 'Abdulloh Nurmatov',
-            position: 'accounting',
-            gender: 'male',
-            dateOfBrith: '12-09-1999'
-        },
-        {
-            id: 6,
-            name: 'Hakim Niyoziy',
-            position: 'marketing',
-            gender: 'male',
-            dateOfBrith: '11-05-1998'
-        },
-        {
-            id: 7,
             name: 'Doniyor Ergashev',
             position: 'accounting',
             gender: 'male',
             dateOfBrith: '12-05-1999'
         },
         {
-            id: 8,
+            id: 6,
             name: 'Ozodbek Qayumov',
             position: 'IT',
-            gender: 'female',
+            gender: 'male',
             dateOfBrith: '01-03-2000'
         },
     ]
-    const singleWorker = {
-        name: '',
-        position: '',
-        gender: '',
-        dateOfBrith: ''
-    }
+
     let totalWorkers = null
     let menWorkers = null
     let womanWorkers = null
@@ -75,7 +55,6 @@ export const useStore = defineStore("main", () => {
 
     return {
         workersList,
-        singleWorker,
         totalWorkers,
         menWorkers,
         womanWorkers,

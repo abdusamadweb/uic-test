@@ -9,8 +9,8 @@
       <span class="item__gender text-sm text-[#70768C]">{{ item.dateOfBrith }}</span>
     </div>
     <div class="item__btns row gap-1.5">
-      <button class="btn btn-edit relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#AD1FEA] hover:opacity-70 duration-200" @click="$router.push(`/edit-worker/${item.id}`)"><i class="fal fa-pen center-absolute"/></button>
-      <button class="btn btn-del relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#D73737] hover:opacity-70 duration-200" @click="removeWorker(item)"><i class="fal fa-trash-alt center-absolute"/></button>
+      <button @click="$router.push(`/edit-worker/${item.id}`)" class="btn btn-edit relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#AD1FEA] hover:opacity-70 duration-200"><i class="fal fa-pen center-absolute"/></button>
+      <button @click="removeWorker(item)" class="btn btn-del relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#D73737] hover:opacity-70 duration-200"><i class="fal fa-trash-alt center-absolute"/></button>
     </div>
   </li>
 </template>
