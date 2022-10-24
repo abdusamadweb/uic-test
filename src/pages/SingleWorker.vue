@@ -9,7 +9,7 @@
         <span class="text-[15px] text=[#70768C] mb-5">Date of birth:<span class="font-semibold ml-3">{{ item.dateOfBrith }}</span></span>
         <div class="item__btns row gap-1.5">
           <button class="btn btn-edit relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#AD1FEA] hover:opacity-70 duration-200" @click="$router.push(`/edit-worker/${item.id}`)"><i class="fal fa-pen center-absolute"/></button>
-          <button class="btn btn-del relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#D73737] hover:opacity-70 duration-200" @click="$emit('remove', item)"><i class="fal fa-trash-alt center-absolute"/></button>
+          <button class="btn btn-del relative w-[40px] h-[40px] rounded-[10px] text-[#fff] bg-[#D73737] hover:opacity-70 duration-200" @click="removeWorker(item)"><i class="fal fa-trash-alt center-absolute"/></button>
         </div>
       </div>
     </div>
@@ -19,13 +19,19 @@
 <script setup>
 
 import {useStore} from "@/store";
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 
 const store = useStore()
 const route = useRoute()
+const router = useRouter()
 
 const workers = store.workersList
 const item = workers.find(item => item.id == route.params.id)
+
+const removeWorker = (e) => {
+  store.workersList = store.workersList.filter(worker => worker.id !== e.id)
+  router.push('/workers')
+}
 
 </script>
 
