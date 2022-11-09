@@ -18,10 +18,10 @@
               </label>
             </form>
             <div class="col-md-3 text-sm relative right-8">
-              <span class="px-4 py-1 rounded-[10px] text-[#4F5E74] bg-[#EFF0F6]">Date:</span>
+              <span class="px-4 py-1 rounded-[10px] text-[#4F5E74] bg-[#EFF0F6]">Gender:</span>
             </div>
             <div class="col-md-3 text-sm pl-16 relative right-10">
-              <span class="px-4 py-1 rounded-[10px] text-[#4F5E74] bg-[#EFF0F6]">Gender:</span>
+              <span class="px-4 py-1 rounded-[10px] text-[#4F5E74] bg-[#EFF0F6]">Date:</span>
             </div>
           </div>
           <ul class="workers__list row flex-col gap-4" v-if="filterWorkers.length > 0">
@@ -34,6 +34,10 @@
       </div>
     </div>
   </div>
+
+
+
+
 </template>
 
 <script setup>
